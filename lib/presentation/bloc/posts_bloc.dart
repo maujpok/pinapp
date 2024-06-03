@@ -20,7 +20,10 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
     on<GetPostsEvent>(_onGetPostsEvent);
     on<GetCommentsEvent>(_onGetCommentsEvent);
   }
-  FutureOr<void> _onGetPostsEvent(event, emit) async {
+  FutureOr<void> _onGetPostsEvent(
+    GetPostsEvent event,
+    Emitter<PostsState> emit,
+  ) async {
     emit(state.copyWith(loading: true));
 
     final response = await getPosts(NoParams());
@@ -31,14 +34,20 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
           errorMessage: _mapFailureToMessage(l),
           loading: false,
         ),
-        (r) => state.copyWith(posts: r, loading: false),
-        // (l) => PostsError(message: _mapFailureToMessage(l)),
-        // (r) => PostsLoaded(posts: r),
+        (r) => state.copyWith(
+          posts: r,
+          loading: false,
+        ),
       ),
     );
   }
 
-  FutureOr<void> _onGetCommentsEvent(event, emit) async {
+  FutureOr<void> _onGetCommentsEvent(
+    GetCommentsEvent event,
+    Emitter<PostsState> emit,
+  ) async {
+    if (state.lastPostId != null && state.lastPostId == event.postId) return;
+
     emit(state.copyWith(loading: true));
 
     final response = await getComments(CommentsParams(postId: event.postId));
@@ -48,9 +57,11 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
         errorMessage: _mapFailureToMessage(l),
         loading: false,
       ),
-      (r) => state.copyWith(comments: r, loading: false),
-      // (l) => PostsError(message: _mapFailureToMessage(l)),
-      // (r) => CommentsLoaded(comments: r),
+      (r) => state.copyWith(
+        comments: r,
+        lastPostId: event.postId,
+        loading: false,
+      ),
     ));
   }
 
