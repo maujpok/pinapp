@@ -1,0 +1,1 @@
+dart run pigeon --input pigeon/comments.dart
