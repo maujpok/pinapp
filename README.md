@@ -4,14 +4,12 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This minimal app shows a list of posts fetched from jsonplaceholder.typicode.com, and allows the user can tap on any of them and retrieve the list of comments of itself.
 
-A few resources to get you started if this is your first Flutter project:
+The project has built using:
+- Clean architecture pattern
+- BLoC as state management library
+- Freezed with json serialization to modelate the post entity from API
+- A service built on Swift language (to fetch post comments), and communicating with Flutter through Pigeon library
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 # pinapp
