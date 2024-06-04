@@ -14,7 +14,6 @@ class CommentItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      margin: EdgeInsets.symmetric(horizontal: 16),
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(8.0),

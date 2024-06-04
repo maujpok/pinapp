@@ -12,7 +12,9 @@ class GetPostsEvent extends PostsEvent {}
 class GetCommentsEvent extends PostsEvent {
   final int postId;
 
-  const GetCommentsEvent({required this.postId});
+  const GetCommentsEvent({
+    required this.postId,
+  });
 
   @override
   List<Object> get props => [postId];

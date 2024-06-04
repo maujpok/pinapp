@@ -27,10 +27,10 @@ class PostListPage extends StatelessWidget {
               );
             } else if (state.posts != null) {
               return SingleChildScrollView(
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: EdgeInsets.all(16),
                 physics: AlwaysScrollableScrollPhysics(),
                 child: ListView.separated(
-                  separatorBuilder: (context, index) => const SizedBox(height: 16),
+                  separatorBuilder: (context, index) => const SizedBox(height: 8),
                   itemCount: state.posts!.length,
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),

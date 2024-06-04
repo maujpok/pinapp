@@ -37,4 +37,6 @@ class PostsState extends Equatable {
   factory PostsState.initial() {
     return const PostsState(loading: false);
   }
+
+  String get selectedPostTitle => posts!.firstWhere((post) => post.id == lastPostId).title;
 }

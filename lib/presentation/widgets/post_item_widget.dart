@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinapp_challenge/app/utils.dart';
 import 'package:pinapp_challenge/data/models/_models.dart';
+import 'package:pinapp_challenge/presentation/bloc/posts_bloc.dart';
 import 'package:pinapp_challenge/presentation/pages/_pages.dart';
 
 class PostItemWidget extends StatelessWidget {
@@ -16,7 +18,6 @@ class PostItemWidget extends StatelessWidget {
     return Card(
       elevation: 5,
       color: Colors.white,
-      margin: const EdgeInsets.symmetric(horizontal: 16),
       child: ListTile(
         leading: Text(
           post.id.toString(),
@@ -39,12 +40,11 @@ class PostItemWidget extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         onTap: () {
+          context.read<PostsBloc>().add(GetCommentsEvent(postId: post.id));
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => PostCommentsPage(
-                postId: post.id,
-              ),
+              builder: (context) => PostCommentsPage(),
             ),
           );
         },

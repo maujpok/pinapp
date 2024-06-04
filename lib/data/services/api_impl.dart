@@ -21,16 +21,4 @@ class ApiImpl implements Api {
       throw ServerException();
     }
   }
-
-  // @override
-  // Future<List<CommentModel>?> getComments(int postId) async {
-  //   final response = await client.get(Uri.parse('https://jsonplaceholder.typicode.com/comments?postId=$postId'));
-
-  //   if (response.statusCode == HttpStatus.ok) {
-  //     final List<dynamic> jsonList = json.decode(response.body);
-  //     return jsonList.map((json) => CommentModel.fromJson(json)).toList();
-  //   } else {
-  //     throw ServerException();
-  //   }
-  // }
 }

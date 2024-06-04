@@ -14,10 +14,6 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'PostRead App',
-        // theme: ThemeData(
-
-        //     // useMaterial3: true,
-        //     ),
         home: const PostListPage(),
       ),
     );

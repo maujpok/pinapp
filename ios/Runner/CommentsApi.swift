@@ -65,7 +65,7 @@ private func nilOrValue<T>(_ value: Any?) -> T? {
 }
 
 /// Generated class from Pigeon that represents data sent in messages.
-struct CommentModel: Codable {
+struct CommentModel : Decodable {
   var postId: Int64
   var id: Int64
   var name: String
