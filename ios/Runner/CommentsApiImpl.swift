@@ -1,30 +1,20 @@
-import Pigeon
 import Foundation
-import URLSession
 
-struct Comment: Codable {
-    let postId: Int
-    let id: Int
-    let name: String
-    let email: String
-    let body: String
-}
-
-class CommentsApiImpl: CommentsApi {
-    func fetchComments(postId: Int, completion: @escaping ([Comment]?) -> Void) {
+class CommentsApiImpl : CommentsApi {
+    func fetchComments(postId: Int64, completion: @escaping (Result<[CommentModel], Error>) -> Void) {
       guard let url = URL(string: "https://jsonplaceholder.typicode.com/comments?postId=\(postId)") else { return }
       
       let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
           guard let data = data, error == nil else { return }
           
           do {
-              let comments = try JSONDecoder().decode([Comment].self, from: data)
-              completion(json ?? [])
+              let comments = try JSONDecoder().decode([CommentModel].self, from: data)
+              completion(.success(comments)) // (comments: comments ?? [])
           } catch {
               print("Error parsing JSON: \(error)")
-              completion([])
+              completion(.failure(error))
           }
       }
       task.resume()
-  }
+    }
 }

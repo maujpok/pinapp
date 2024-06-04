@@ -5,6 +5,7 @@ import 'package:pinapp_challenge/core/error/failures.dart';
 import 'package:pinapp_challenge/core/usecases/usecase.dart';
 import 'package:pinapp_challenge/data/models/_models.dart';
 import 'package:pinapp_challenge/domain/usecases/_usecases.dart';
+import 'package:pinapp_challenge/native_api/comments_api.dart';
 
 part 'posts_event.dart';
 part 'posts_state.dart';

@@ -2,6 +2,11 @@ import 'package:pigeon/pigeon.dart';
 
 @ConfigurePigeon(PigeonOptions(
   dartOut: 'lib/native_api/comments_api.dart',
+  dartTestOut: 'test/native_api/comments_api_test.dart',
+  dartOptions: DartOptions(),
+  objcOptions: ObjcOptions(),
+  objcHeaderOut: 'ios/Runner/CommentsApi.h',
+  objcSourceOut: 'ios/Runner/CommentsApi.m',
   swiftOut: 'ios/Runner/CommentsApi.swift',
   dartPackageName: 'pinapp_challenge',
 ))
@@ -17,5 +22,11 @@ class CommentModel {
   final String name;
   final String email;
   final String body;
-  CommentModel(this.postId, this.id, this.name, this.email, this.body);
+  CommentModel({
+    required this.postId,
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.body,
+  });
 }

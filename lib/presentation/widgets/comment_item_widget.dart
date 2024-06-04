@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pinapp_challenge/app/utils.dart';
-import 'package:pinapp_challenge/data/models/_models.dart';
+import 'package:pinapp_challenge/native_api/comments_api.dart';
 
 class CommentItemWidget extends StatelessWidget {
   const CommentItemWidget({
