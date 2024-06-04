@@ -7,6 +7,7 @@ import 'package:pinapp_challenge/data/services/api.dart';
 import 'package:pinapp_challenge/data/services/api_impl.dart';
 import 'package:pinapp_challenge/domain/repositories/post_repository.dart';
 import 'package:pinapp_challenge/domain/usecases/_usecases.dart';
+import 'package:pinapp_challenge/native_api/comments_api.dart';
 import 'package:pinapp_challenge/presentation/bloc/posts_bloc.dart';
 import 'package:http/http.dart' as http;
 
@@ -21,6 +22,7 @@ Future<void> init() async {
     ..registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()))
     // Data
     ..registerLazySingleton<Api>(() => ApiImpl(client: sl()))
+    ..registerLazySingleton<CommentsApi>(() => CommentsApi())
     // Repository
     ..registerLazySingleton<PostRepository>(
       () => PostRepositoryImpl(
